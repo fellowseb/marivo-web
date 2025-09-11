@@ -66,8 +66,10 @@ class LogoSpotlightsEffect {
   private intervalId?: number;
 }
 
+const SPOTLIGHTS_MOVEMENT_DELAY_MS = 5_000;
+
 window.addEventListener('DOMContentLoaded', function onDOMLoaded() {
   this.setTimeout(function () {
     new LogoSpotlightsEffect().start();
-  }, 5000);
+  }, SPOTLIGHTS_MOVEMENT_DELAY_MS);
 });
