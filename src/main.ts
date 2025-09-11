@@ -1,4 +1,4 @@
-import "./style.css";
+import './style.css';
 
 class LogoSpotlightsEffect {
   public start() {
@@ -31,34 +31,34 @@ class LogoSpotlightsEffect {
     rightSpotAngle: number,
     rightSpotSpeed: number,
   ) {
-    const rightSpotElem = document.getElementById("logo-spot-right");
+    const rightSpotElem = document.getElementById('logo-spot-right');
     if (!rightSpotElem) {
-      throw new Error("Unable to find logo-spot-right element");
+      throw new Error('Unable to find logo-spot-right element');
     }
-    const leftSpotElem = document.getElementById("logo-spot-left");
+    const leftSpotElem = document.getElementById('logo-spot-left');
     if (!leftSpotElem) {
-      throw new Error("Unable to find logo-spot-left element");
+      throw new Error('Unable to find logo-spot-left element');
     }
     leftSpotElem.setAttribute(
-      "style",
+      'style',
       `transform: rotate(${leftSpotAngle}deg); transition: transform ${leftSpotSpeed}s ease-out;`,
     );
     rightSpotElem.setAttribute(
-      "style",
+      'style',
       `transform: rotate(${rightSpotAngle}deg); transition: transform ${rightSpotSpeed}s ease-out;`,
     );
   }
 
   private listenTryOutBtnHover() {
-    const tryOutBtn = document.getElementById("try-out-btn");
+    const tryOutBtn = document.getElementById('try-out-btn');
     if (!tryOutBtn) {
       return;
     }
-    tryOutBtn.addEventListener("mouseenter", () => {
+    tryOutBtn.addEventListener('mouseenter', () => {
       this.stopMovement();
       this.moveSpotlights(0, 0.1, 0, 0.1);
     });
-    tryOutBtn.addEventListener("mouseleave", () => {
+    tryOutBtn.addEventListener('mouseleave', () => {
       this.startMovement();
     });
   }
@@ -66,7 +66,7 @@ class LogoSpotlightsEffect {
   private intervalId?: number;
 }
 
-window.addEventListener("DOMContentLoaded", function onDOMLoaded() {
+window.addEventListener('DOMContentLoaded', function onDOMLoaded() {
   this.setTimeout(function () {
     new LogoSpotlightsEffect().start();
   }, 5000);
