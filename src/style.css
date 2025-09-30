@@ -44,7 +44,23 @@ section {
   justify-content: center;
 }
 
-button {
+.home-bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease-out;
+  transition-behavior: allow-discrete;
+  height: 100px;
+  opacity: 1;
+}
+
+.home-bottom-content.hidden {
+  display: none;
+  height: 0;
+  opacity: 0;
+}
+
+a#try-out-btn {
   border-radius: 8px;
   border: 0px solid #1f313c;
   padding: 0.6em 1.2em;
@@ -53,8 +69,10 @@ button {
   background-color: #1f313c;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: #fef8eb;
 }
-button:hover {
+
+a#try-out-btn:hover {
   background: #833ab4;
   background: linear-gradient(
     32deg,
@@ -63,19 +81,6 @@ button:hover {
     rgba(252, 176, 69, 1) 99%
   );
   color: #fef8eb;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    color: #fef8eb;
-  }
 }
 
 picture.home-logo > img.logo-spot {

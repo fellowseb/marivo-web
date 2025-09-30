@@ -1,9 +1,16 @@
 import './style.css';
 
+interface LogoSpotlightsEffectOptions {
+  initialDelay: number;
+}
+
 class LogoSpotlightsEffect {
-  public start() {
-    this.startMovement();
+  public init(opts: LogoSpotlightsEffectOptions) {
+    this.listenTryOutBtnClick();
     this.listenTryOutBtnHover();
+    setTimeout(() => {
+      this.startMovement();
+    }, opts.initialDelay);
   }
 
   private startMovement() {
@@ -63,13 +70,37 @@ class LogoSpotlightsEffect {
     });
   }
 
+  private listenTryOutBtnClick() {
+    const tryOutBtn = document.getElementById('try-out-btn');
+    if (!tryOutBtn) {
+      return;
+    }
+    tryOutBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.hideBottomContent();
+      setTimeout(() => {
+        location.href = 'http://localhost:5173';
+      }, 200);
+    });
+  }
+
+  private hideBottomContent() {
+    const homeBottomContentElem = document.getElementById(
+      'home-bottom-content',
+    );
+    if (!homeBottomContentElem) {
+      return;
+    }
+    homeBottomContentElem.setAttribute('class', `home-bottom-content hidden`);
+  }
+
   private intervalId?: number;
 }
 
 const SPOTLIGHTS_MOVEMENT_DELAY_MS = 5_000;
 
 window.addEventListener('DOMContentLoaded', function onDOMLoaded() {
-  this.setTimeout(function () {
-    new LogoSpotlightsEffect().start();
-  }, SPOTLIGHTS_MOVEMENT_DELAY_MS);
+  new LogoSpotlightsEffect().init({
+    initialDelay: SPOTLIGHTS_MOVEMENT_DELAY_MS,
+  });
 });
